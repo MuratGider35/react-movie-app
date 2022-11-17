@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, InputAdornment, Box, Button } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
