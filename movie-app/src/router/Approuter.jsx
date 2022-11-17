@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MovieDetail from "../pages/MovieDetail";
 
 const Approuter = () => {
   return (
@@ -12,6 +13,7 @@ const Approuter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/details/:id" element={<MovieDetail/>} />
         </Routes>
       </BrowserRouter>
     </div>
