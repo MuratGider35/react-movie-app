@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, InputAdornment, Box, Button } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { forgotPassword, signIn, signUpWithGoogle } from "../auth/firebase";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleGoogleProvider = () => {
+    signUpWithGoogle(navigate);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signIn(email, password, navigate);
+    console.log(email, password);
+  };
+
   return (
     <>
       <Box
@@ -16,7 +31,7 @@ const Login = () => {
         }}
         className="bgcinema"
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <Box
             sx={{ display: "flex", flexDirection: "column", width: "250px" }}
             className="bgform"
@@ -37,6 +52,7 @@ const Login = () => {
                   </InputAdornment>
                 ),
               }}
+              onChange={(e) => setEmail(e.target.value)}
               type="e-mail"
             />
 
@@ -57,9 +73,21 @@ const Login = () => {
                 ),
               }}
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
             />
+            <span
+              role="button"
+              className="links-a font-[0.75em] cursor-pointer decoration-none text-[#8f8f8f]"
+              onClick={() => forgotPassword(email)}
+            >
+              Forgot Password
+            </span>
             <Button variant="contained">LOGIN</Button>
-            <Button variant="contained" color="warning">
+            <Button
+              onClick={handleGoogleProvider}
+              variant="contained"
+              color="warning"
+            >
               SIGN IN WITH GOOGLE
             </Button>
           </Box>

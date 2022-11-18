@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
-// import { logOut } from "../auth/firebase";
-// import { AuthContext } from "../context/AuthContextProvider";
+import { logOut } from "../auth/firebase";
+import { AuthContext } from "../context/AuthContextProvider";
 // import Switch from "./Switch";
 
 const Navbar = () => {
-  //   const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   //* with custom hook
-  // const { currentUser } = useAuthContext();
 
-  const currentUser = { displayName: "felix franko" };
-  // const currentUser = false;
   return (
     <>
       <nav className="w-full flex flex-wrap items-center justify-between py-3 bg-slate-600 shadow-lg navbar navbar-expand-lg fixed-top">
@@ -71,7 +68,7 @@ const Navbar = () => {
                     <span
                       className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
                       role="button"
-                      // onClick={() => logOut()}
+                      onClick={() => logOut()}
                     >
                       Logout
                     </span>

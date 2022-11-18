@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TextField, InputAdornment, Box, Button } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
+import { createUser, signUpWithGoogle } from "../auth/firebase";
 // import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const displayName = `${firstName} ${lastName}`;
+    createUser(email, password, navigate, displayName);
+    console.log(firstName, lastName);
+  };
+
+  const handleGoogleProvider = () => {
+    signUpWithGoogle(navigate);
+  };
   return (
     <>
       <Box
@@ -16,7 +34,7 @@ const Register = () => {
         }}
         className="bgcinema"
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <Box
             sx={{ display: "flex", flexDirection: "column", width: "250px" }}
             className="bgform"
@@ -37,6 +55,7 @@ const Register = () => {
                   </InputAdornment>
                 ),
               }}
+              onChange={(e) => setFirstName(e.target.value)}
               type="e-mail"
             />
             <TextField
@@ -56,6 +75,7 @@ const Register = () => {
                 ),
               }}
               type="e-mail"
+              onChange={(e) => setLastName(e.target.value)}
             />
             <TextField
               id="outlined-basic"
@@ -74,6 +94,7 @@ const Register = () => {
                 ),
               }}
               type="e-mail"
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
@@ -93,8 +114,14 @@ const Register = () => {
                 ),
               }}
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <Button variant="contained">REGISTER</Button>
+            <Button type="submit" value="Register" variant="contained">
+              REGISTER
+            </Button>
+            <Button onClick={handleGoogleProvider} variant="contained">
+              CONTINUE WİTH GOOGLE
+            </Button>
           </Box>
         </form>
       </Box>

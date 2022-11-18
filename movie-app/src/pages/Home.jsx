@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { createTheme, ThemeProvider } from "@mui/material";
 import MovieCard from "../components/MovieCard";
 import { toastWarnNotify } from "../helpers/ToastNotify";
-
-
+import { AuthContext } from "../context/AuthContextProvider";
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
@@ -14,8 +13,7 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const currentUser = { displayName: "felix franko" };
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     getMovies(FEATURED_API);
@@ -68,8 +66,6 @@ const Home = () => {
         <button className="dark:text-white" type="submit">
           Search
         </button>
-
-       
       </form>
 
       <div className="flex justify-center flex-wrap">

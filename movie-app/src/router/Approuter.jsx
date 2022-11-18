@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetail from "../pages/MovieDetail";
+import PrivateRouter from "./PrivateRouter";
 
 const Approuter = () => {
   return (
@@ -13,7 +14,9 @@ const Approuter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/details/:id" element={<MovieDetail/>} />
+          <Route path="/login/:id" element={<PrivateRouter />}>
+            <Route path="" element={<MovieDetail />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
