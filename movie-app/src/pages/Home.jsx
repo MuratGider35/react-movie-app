@@ -54,7 +54,7 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-
+      <div className="homebg">
       <form className="flex justify-center p-2" onSubmit={handleSubmit}>
         <input
           type="search"
@@ -80,6 +80,9 @@ const Home = () => {
           movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
         )}
       </div>
+      </div>
+
+   
     </ThemeProvider>
   );
 };

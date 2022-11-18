@@ -3,6 +3,7 @@ import { TextField, InputAdornment, Box, Button } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { forgotPassword, signIn, signUpWithGoogle } from "../auth/firebase";
+import Navbar from "../components/Navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,6 +22,7 @@ const Login = () => {
 
   return (
     <>
+      <Navbar />
       <Box
         sx={{
           display: "flex",
@@ -82,8 +84,11 @@ const Login = () => {
             >
               Forgot Password
             </span>
-            <Button variant="contained">LOGIN</Button>
+            <Button type="submit" variant="contained">
+              LOGIN
+            </Button>
             <Button
+              type="button"
               onClick={handleGoogleProvider}
               variant="contained"
               color="warning"

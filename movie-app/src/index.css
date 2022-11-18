@@ -16,13 +16,13 @@ code {
 }
 
 .bgcinema {
-  background-image: url(../../movie-app/src/image/cinema.jpg);
-  background-repeat: no-repeat;
+  background-color: rgb(166, 167, 180);
   background-size: cover;
+  height: 100vh;
 }
 .bgform {
   background-color: rgba(1, 34, 18, 0.3);
-  padding: 3rem;
+  padding: 1.5rem;
   border-radius: 5px;
 }
 .movie {
@@ -77,4 +77,10 @@ code {
 
 .tag.red {
   background-color: #7f0000;
+}
+.movidetailbg {
+  background-color: rgb(166, 167, 180);
+}
+.homebg {
+  background-color: rgb(166, 167, 180);
 }

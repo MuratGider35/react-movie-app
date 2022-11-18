@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, InputAdornment, Box, Button } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { createUser, signUpWithGoogle } from "../auth/firebase";
+import Navbar from "../components/Navbar";
 // import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -24,6 +25,7 @@ const Register = () => {
   };
   return (
     <>
+      <Navbar />
       <Box
         sx={{
           display: "flex",
@@ -119,7 +121,12 @@ const Register = () => {
             <Button type="submit" value="Register" variant="contained">
               REGISTER
             </Button>
-            <Button onClick={handleGoogleProvider} variant="contained">
+            <Button
+              type="button"
+              color="warning"
+              onClick={handleGoogleProvider}
+              variant="contained"
+            >
               CONTINUE WİTH GOOGLE
             </Button>
           </Box>
