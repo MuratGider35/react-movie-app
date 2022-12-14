@@ -1,2 +1,2 @@
 # react-movie-app
-https://react-movie-app-ochre-two.vercel.app
+https://movie-app-35.netlify.app/
